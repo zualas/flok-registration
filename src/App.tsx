@@ -3,7 +3,7 @@ import "./App.css";
 import Registration from "./components/Registration";
 import UserManagement from "./components/UserManagement";
 import InMemoryStore from "./controllers/InMemoryStore";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 export default class App extends React.Component {
   state = {
@@ -13,7 +13,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <div className="App">
             <header className="App-header">
@@ -33,12 +33,12 @@ export default class App extends React.Component {
               </span>
             </header>
             <Switch>
-              <Route path="/registration">
+              <Route exact path="/registration">
                 <div className="container-form">
                   <Registration store={this.state.store} />
                 </div>
               </Route>
-              <Route path="/user-management">
+              <Route exact path="/user-management">
                 <div className="container-table">
                   <UserManagement store={this.state.store} />
                 </div>
@@ -46,7 +46,7 @@ export default class App extends React.Component {
             </Switch>
           </div>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

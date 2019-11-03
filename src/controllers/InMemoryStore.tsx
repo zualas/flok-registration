@@ -26,8 +26,8 @@ export default class InMemoryStore {
       InMemoryStore.getStorage().deleteRecord(last);
       this.listener.onChange();
     };
-    // @ts-ignore so that we don't have to define all possible properties
     record["delete"] = (
+      // @ts-ignore so that we don't have to define all possible properties
       <DeleteButton delete={deleteRun} listener={this.listener} />
     );
     record["id"] = this.id++;
