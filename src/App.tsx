@@ -23,7 +23,7 @@ export default class App extends React.Component {
                 src={require("./assets/flok_5.png")}
               />
 
-              <span>
+              <span className="header-navigation">
                 <span className="header-link">
                   <Link to="/registration">Registratsioon</Link>
                 </span>

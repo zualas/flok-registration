@@ -13,16 +13,31 @@ body {
 .App-header {
   margin: -1em;
   padding: 2em;
-  background-color: #b9b9b9;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #b9b9b9;
 }
-.App-header span.header-link {
+.App-header .header-navigation {
+  display: flex;
+  justify-content: center;
+}
+.App-header .header-navigation span.header-link {
   cursor: pointer;
   padding: 5px;
   margin: 5px;
-  color: #0f6cc9;
+  color: #7ed321;
+  animation: ease-out 0.4s;
 }
-.App-header span.header-link:hover {
-  color: #04aec5;
+.App-header .header-navigation span.header-link a {
+  color: #497e10;
+}
+.App-header .header-navigation span.header-link:hover {
+  border-radius: 5px;
+  background-color: #7ed321;
+  animation: ease-in 0.4s;
+}
+.App-header .header-navigation span.header-link:hover a {
+  color: #fff;
+  text-decoration: none;
 }
 .App-header img.logo {
   height: 3em;

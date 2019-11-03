@@ -70,15 +70,31 @@ body {
 .App-header {
   margin: -1em;
   padding: 2em;
-  background-color: @grey-dark;
-  span.header-link {
-    cursor: pointer;
-    padding: 5px;
-    margin: 5px;
-    color: @blue-dark;
-  }
-  span.header-link:hover {
-    color: @blue;
+  background-color: @grey;
+  border-bottom: 1px solid @grey-dark;
+  .header-navigation {
+    display: flex;
+    justify-content: center;
+    span.header-link {
+      cursor: pointer;
+      padding: 5px;
+      margin: 5px;
+      color: @green;
+      animation: ease-out 0.4s ;
+    }
+    span.header-link a {
+      color: darken(saturate(@green, 5%), 20%);      
+    }
+    span.header-link:hover {
+      border-radius: 5px;
+      background-color: @green;
+      animation: ease-in 0.4s;
+    }
+    span.header-link:hover a {
+      color: @white;
+      text-decoration: none;
+      
+    }
   }
   img.logo {
     height: 3em;
@@ -222,12 +238,13 @@ select {
 }
 
 .invalid {
-  color: @red
+  color: @red;
 }
 
 .input-group-icon {
   position: relative;
-  input, .input {
+  input,
+  .input {
     padding-left: 4.4em;
     width: 100%;
   }
@@ -258,13 +275,13 @@ select {
 
 #errors {
   width: 100%;
-.error {
-  background-color: @red;
-  border-color: darken(saturate(@red, 5%), 10%);
-  border-width: 1px;
-  width: 100%;
-  margin: 5px;
-}
+  .error {
+    background-color: @red;
+    border-color: darken(saturate(@red, 5%), 10%);
+    border-width: 1px;
+    width: 100%;
+    margin: 5px;
+  }
 }
 
 .rangeslider {
@@ -273,7 +290,6 @@ select {
     background-color: @color-primary !important;
   }
 }
-
 
 // STRUCTURE
 
@@ -315,5 +331,3 @@ select {
     padding-right: 0;
   }
 }
-
-
