@@ -25,22 +25,24 @@
 }
 
 // VARIABLES
-
+@flok-dark: #343b4c;
+@flok-darkest: darken(saturate(@flok-dark, 5%), 10%);
+@flok-gold: #f3cf96;
 @white: #fff;
 @grey-lightest: #f9f9f9;
 @grey-light: #e3e3e3;
-@grey: #e5e5e5;
+@grey: #DAD3CC;
 @grey-dark: #b9b9b9;
 @red: #dc3545;
 @purple: #c68eaa;
 @green: #7ed321;
 @emerald: #04bdbd;
-@blue: #04aec5;
+@blue: #1f99ff;
 @blue-dark: #0f6cc9;
-@color-primary: @green;
+@color-primary: @flok-gold;
 @color-primary-strong: darken(saturate(@color-primary, 5%), 10%);
 
-@br: 3px;
+@br: 10px;
 
 @fast: 0.35s;
 
@@ -57,12 +59,11 @@
 }
 
 body {
-  padding: 1em;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 1em !important;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-size: 15px;
   // font-size: 1vw;
-  color: @grey-dark;
-  background-color: @grey-light;
+  background-color: @flok-darkest !important;
 }
 
 // HEADER
@@ -70,7 +71,7 @@ body {
 .App-header {
   margin: -1em;
   padding: 2em;
-  background-color: @grey;
+  background-color: @flok-dark;
   border-bottom: 1px solid @grey-dark;
   .header-navigation {
     display: flex;
@@ -79,21 +80,21 @@ body {
       cursor: pointer;
       padding: 5px;
       margin: 5px;
-      color: @green;
-      animation: ease-out 0.4s ;
+      color: @color-primary;
+      .transition(@fast, @ease);
     }
     span.header-link a {
-      color: darken(saturate(@green, 5%), 20%);      
+      color: darken(saturate(@color-primary, 5%), 20%);
     }
     span.header-link:hover {
-      border-radius: 5px;
-      background-color: @green;
-      animation: ease-in 0.4s;
+      border-radius: @br;
+      background-color: @color-primary;
+      .transition(@fast, @ease);
+      box-shadow: 0px 3px 10px -2px @color-primary;
     }
     span.header-link:hover a {
-      color: @white;
+      color: @flok-darkest;
       text-decoration: none;
-      
     }
   }
   img.logo {
@@ -113,19 +114,20 @@ input {
   width: 100%;
   padding: 1em;
   line-height: 1.4;
-  background-color: @grey-lightest;
-  border: 1px solid @grey;
-  border-radius: 3px;
+  background-color: @flok-dark;
+  border: 1px solid @grey-dark;
+  color: @grey;
+  border-radius: 10px;
   .transition(@fast, @ease);
   &:focus {
     outline: 0;
     border-color: @color-primary-strong;
     & + .input-icon {
       i {
-        color: @color-primary;
+        color: @grey-lightest;
       }
       &:after {
-        border-right-color: @color-primary;
+        border-right-color: @grey-lightest;
       }
     }
   }
@@ -136,6 +138,7 @@ input {
       display: inline-block;
       width: 50%;
       text-align: center;
+      color: @grey;
       float: left;
       border-radius: 0;
       &:first-of-type {
@@ -152,7 +155,7 @@ input {
     }
     &:checked + label {
       background-color: @color-primary;
-      color: @white;
+      color: @flok-darkest;
       border-color: @color-primary-strong;
     }
   }
@@ -195,12 +198,11 @@ input {
   }
   &[type="button"] {
     background-color: @color-primary;
-    color: @white;
+    color: @flok-darkest;
     padding-left: 1em !important;
   }
   &[type="button"]:hover {
     background-color: @color-primary-strong;
-    color: @white;
   }
 }
 
@@ -247,6 +249,9 @@ select {
   .input {
     padding-left: 4.4em;
     width: 100%;
+    .input-label {
+      color: @grey-light;
+    }
   }
   .input-icon {
     position: absolute;
@@ -273,17 +278,6 @@ select {
   }
 }
 
-#errors {
-  width: 100%;
-  .error {
-    background-color: @red;
-    border-color: darken(saturate(@red, 5%), 10%);
-    border-width: 1px;
-    width: 100%;
-    margin: 5px;
-  }
-}
-
 .rangeslider {
   width: 100%;
   .rangeslider__fill {
@@ -297,9 +291,9 @@ select {
   max-width: 38em;
   padding: 1em 3em 2em 3em;
   margin: 0em auto;
-  background-color: @white;
+  background-color: @flok-dark;
   border-radius: @br * 1.4;
-  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 10px -2px @color-primary;
 }
 
 .container-table {
@@ -308,7 +302,7 @@ select {
   margin: 0em auto;
   background-color: @white;
   border-radius: @br * 1.4;
-  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 10px -2px @color-primary;
 }
 
 .row {

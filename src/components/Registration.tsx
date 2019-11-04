@@ -13,23 +13,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Slider from "react-rangeslider";
 import "react-rangeslider/lib/index.css";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 import InMemoryStore from "../controllers/InMemoryStore";
 
 interface RegistrationProps {
   store: InMemoryStore;
 }
 
-export class Registration extends React.Component<
-  RegistrationProps,
-  any
-> {
+export class Registration extends React.Component<RegistrationProps, any> {
   state = {
     isCompany: true, // true if company, false if private
     companyName: "",
     companyRegistryCode: "",
     name: "",
-    age: 18, // initial value
+    age: "", // initial value
     email: "",
     password: "",
 
@@ -61,6 +58,7 @@ export class Registration extends React.Component<
         ) && errorMessages++;
       }
       !this.fieldValidOrShowError("name", record.name) && errorMessages++;
+      !this.fieldValidOrShowError("age", record.age) && errorMessages++;
       !this.fieldValidOrShowError("email", record.email) && errorMessages++;
       !this.fieldValidOrShowError("password", record.password) &&
         errorMessages++;
@@ -68,7 +66,7 @@ export class Registration extends React.Component<
       if (errorMessages === 0) {
         this.props.store.createRecord(record);
         // @ts-ignore
-        this.props.history.push('/user-management')
+        this.props.history.push("/user-management");
       }
     });
   };
@@ -138,14 +136,7 @@ export class Registration extends React.Component<
             </label>
           </div>
           {this.state.isCompany && (
-            <div
-              id="companyName"
-              className={
-                FormValidation.checkValid("company", this.state.companyName)
-                  ? "input-group valid input-group-icon"
-                  : "input-group input-group-icon"
-              }
-            >
+            <div id="companyName" className="input-group input-group-icon">
               <input
                 type="text"
                 placeholder="Ettevõtte nimi"
@@ -196,12 +187,17 @@ export class Registration extends React.Component<
               <FontAwesomeIcon icon={faUser} />
             </div>
           </div>
-          <div className="input-group input-group-icon">
+          <div id="age" className="input-group input-group-icon">
             <div className="input">
-              Vanus: <b>{this.state.age}</b>
+              <span className="input-label">
+                Vanus<b>{(this.state.age && ": ") + this.state.age}</b>
+              </span>
               <Slider
                 value={this.state.age}
-                onChange={value => this.setState({ age: value })}
+                onChange={value => {
+                  this.fieldValidOrShowError("age", value);
+                  this.setState({ age: value });
+                }}
                 min={18}
                 max={120}
               />
@@ -253,4 +249,4 @@ export class Registration extends React.Component<
   }
 }
 
-export default withRouter(Registration)
+export default withRouter(Registration);
