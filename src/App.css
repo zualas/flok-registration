@@ -125,7 +125,7 @@ input[type="checkbox"] + label:after {
   font-size: 0.8em;
   color: #fff;
   opacity: 0;
-  font-family: FontAwesome;
+  font-family: FontAwesome sans-serif;
   content: "\f00c";
 }
 input:checked + label:after {
